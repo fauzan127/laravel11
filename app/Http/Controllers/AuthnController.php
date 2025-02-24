@@ -12,17 +12,17 @@ class AuthnController extends Controller
         return view('auth.login');
     }
     public function authenticate(Request $request){
-        // // First verify CAPTCHA
-        // $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-        //     'secret' => config('services.recaptcha.secret_key'),
-        //     'response' => $request->input('g-recaptcha-response'),
-        //     'remoteip' => $request->ip(),
-        // ]);
+        // First verify CAPTCHA
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret_key'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip(),
+        ]);
 
-        // // If CAPTCHA fails
-        // if (!$response->json()['success']) {
-        //     return back()->withErrors(['g-recaptcha-response' => 'reCAPTCHA verification failed.']);
-        // }
+        // If CAPTCHA fails
+        if (!$response->json()['success']) {
+            return back()->withErrors(['g-recaptcha-response' => 'reCAPTCHA verification failed.']);
+        }
 
         // Then validate credentials
         $credentials = $request->validate([
