@@ -44,7 +44,7 @@
         </div>
     </div>
     <hr class="my-6 mt-10 border-gray-300">
-    <h2 class="text-center text-5xl font-bold mb-10">Berita</h2>
+    <h2 class="text-center text-5xl font-bold mb-10">Berita 1</h2>
     <div class="my-4 px-2 mx-auto max-w-screen-xl lg:py-4 lg:px-0">
         <div class="grid gap-8 md:grid-cols-3">
             @forelse ($posts as $post)
