@@ -30,7 +30,7 @@
                     <img class="w-full max-h-[400px] object-cover" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}">
                 </div>
             @else
-                <img class="w-full max-h-[400px] object-cover rounded-lg shadow-md mb-6" src="https://www.algobash.com/wp-content/uploads/2023/03/Online-Coding-Test-in-Java.jpg" alt="{{ $post->category->name }}">
+                <img class="w-full max-h-[400px] object-cover rounded-lg shadow-md mb-6" src="https://stg-uploads.slidenest.com/template_2552/templateColor_2450/previewImages/beginner-coding-modern-powerpoint-google-slides-keynote-presentation-26.jpeg" alt="{{ $post->category->name }}">
             @endif       
             <div class="prose max-w-none prose-lg dark:prose-invert">{!! $post->body !!}</div>
         </article>

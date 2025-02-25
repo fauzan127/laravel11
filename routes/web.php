@@ -14,6 +14,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     $sliders = Slider::latest()->get();
@@ -89,4 +90,8 @@ Route::middleware(IsAdmin::class)->group(function () {
     Route::get('/dashboard/slider/edit/{slider}', [SliderController::class, 'edit'])->name('dashboard.slider.edit');
     Route::put('/dashboard/slider/{slider}', [SliderController::class, 'update'])->name('dashboard.slider.update');
     Route::delete('/dashboard/slider/{id}', [SliderController::class, 'destroy'])->name('dashboard.slider.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::put('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
 });

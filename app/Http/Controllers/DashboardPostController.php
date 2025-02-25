@@ -37,7 +37,7 @@ class DashboardPostController extends Controller
         ]);
 
         if($request->file('image')){
-            $validatedData['image'] = $request->file('image')->store('post-images');
+            $validatedData['image'] = $request->file('image')->store('post-images', 'public');
         }
         $validatedData['author_id'] = Auth::user()->id; // Updated
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
@@ -89,7 +89,7 @@ class DashboardPostController extends Controller
             if($post->image){
                 Storage::delete($post->image);
             }
-            $validatedData['image'] = $request->file('image')->store('post-images');
+            $validatedData['image'] = $request->file('image')->store('post-images', 'public');
         }
         $validatedData['author_id'] = Auth::user()->id; // Updated
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
@@ -100,4 +100,3 @@ class DashboardPostController extends Controller
         return redirect('/dashboard/posts')->with('update', 'Post has been updated!');
     }
 }
-

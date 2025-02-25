@@ -43,18 +43,10 @@
                         </div>
                         <div class="p-4">
                             <div class="flex justify-between items-center mb-5 text-gray-500">
-                                <a href="/posts?category={{ $post->category->slug }}">
-                                    <span class="text-white text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded"
-                                    style="background: linear-gradient(to right, 
-                                    @if($post->category->color == 'red') #0dcaf0, #e25858
-                                    @elseif($post->category->color == 'green') #2e8b57, #66cdaa
-                                    @elseif($post->category->color == 'blue') #bdc3c7, #3b82f6
-                                    @elseif($post->category->color == 'yellow') #b8860b, #f1c40f
-                                    @else #7f8c8d, #bdc3c7
-                                    @endif);">
-                                    {{ $post->category->name }}
-                                </span>
-
+                                <a href="/posts?category={{ $post->category->slug }}" class="inline-block mt-2">
+                                    <span class="bg-{{ $post->category->color }}-100 text-{{ $post->category->color }}-800 text-xs font-medium px-3 py-1 rounded-full dark:bg-{{ $post->category->color }}-200 dark:text-{{ $post->category->color }}-900">
+                                        {{ $post->category->name }}
+                                    </span>
                                 </a>
                                 <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
                             </div>
